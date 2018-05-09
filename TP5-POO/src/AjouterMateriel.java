@@ -49,7 +49,7 @@ public class AjouterMateriel implements OutilsConstantes {
 
 				indiceMat = momoTech.getTabMateriel().chercher( matTemp );
 
-				if ( indiceMat != 1 ) {
+				if ( indiceMat != -1 ) {
 
 					System.out.println( "\nLe matériel informatique no " + matTemp.getNoMateriel() + " existe déjà." );
 
