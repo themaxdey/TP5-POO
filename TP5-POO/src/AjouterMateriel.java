@@ -1,5 +1,5 @@
 /**
- * Auteurs : Jean-Sébastien Beaulne et maxime Déry et Christian Mongeon
+ * Auteurs : Jean-Sebastien Beaulne et maxime Dery et Christian Mongeon
  * Fichier : AjouterMateriel.java
  * Cours   : 420-ZE4-MO (TP5, MomoTech)
  * Date    : 15 mai 2018
