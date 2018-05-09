@@ -40,15 +40,24 @@ public class ConsulterToutMateriel implements OutilsConstantes {
 
 			char type = OutilsLecture.lireCaractereDisparate(MaterielInfo.QUEST_TYPE_CONSULTER,
 					MaterielInfo.TYPES_MATERIEL_CONSULTER);
-			
+
 			System.out.println(TITRE);
-			
+
 			int compteurMat = 0;
-			
+
 			for (int i = 0; i < nbElements; i++) {
-				Object matCourant = momoTech.getTabMateriel().obtenirObjet(i);
-				
+
+				MaterielInfo matCourant = (MaterielInfo) momoTech.getTabMateriel().obtenirObjet(i);
+
+				if (type == MaterielInfo.TOUS || type == matCourant.obtenirType()) {
+					compteurMat++;
+					matCourant.afficher();
+					OutilsLecture.lireEntree(QUEST_CONTINUER);
+				}
 			}
+
+			System.out.println("\nNombre d'items consultés : " + compteurMat);
+
 		}
 
 	}
