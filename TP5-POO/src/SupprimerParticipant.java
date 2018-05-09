@@ -45,9 +45,27 @@ public class SupprimerParticipant implements OutilsConstantes {
 			do {
 				System.out.println( TITRE );
 
-				/**
-				 * TODO (À COMPLÉTER). Voir page 10 de l'énoncé du TP5.
-				 */
+				participant = new Participant();
+				
+				participant.lireNoParticipant();
+				
+				indParticipant = momoTech.getTabParticipants().chercher(participant);
+				
+				if (indParticipant == -1) {
+					System.out.println(MESS_VIDE);
+				}else {
+					participant.afficher();
+					
+					char confirmation = OutilsLecture.lireOuiNon(QUEST_CONF_SUPP);
+					
+					if (confirmation == OUI) {
+						momoTech.getTabParticipants().supprimer(indParticipant);
+						
+						System.out.println("Le participant #" + indParticipant + " a été supprimé.");
+					} else {
+						System.out.println("La suppression du participant #" + indParticipant + " a été annulée.");
+					}
+				}
 
 
 				//---------------------------------------------------------
