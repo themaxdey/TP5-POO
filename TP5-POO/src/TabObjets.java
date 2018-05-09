@@ -18,7 +18,7 @@ import java.io.*;
  */
 
 public class TabObjets implements CollectionObjets, Serializable {
-	
+
 	// Numéro d'identification pour la sauvegarde d'une collection d'objets.
 	static final long serialVersionUID = 1;
 
@@ -27,7 +27,7 @@ public class TabObjets implements CollectionObjets, Serializable {
 	private Object[] tabObjets; // Tableau d'objets.
 
 	private int nbObjets; // Nombre d'objets dans le tableau.
-	
+
 	/**
 	 * Constructeur qui permet d'initialiser le tableau des objets. Au début le
 	 * tableau ne contient aucun objet.
@@ -35,19 +35,19 @@ public class TabObjets implements CollectionObjets, Serializable {
 	 * @param maxObjets
 	 *            Le nombre maximum d'objets du tableau.
 	 */
-	
+
 	public TabObjets( int maxObjets ) {
 		this.tabObjets = new Object[maxObjets];
 		this.nbObjets = 0;
 	}
-	
+
 	/**
 	 * Implémentation de la méthode taille() qui permet de connaître le nombre
 	 * d'objets dans le tableau.
 	 * 
 	 * @return Le nombre d'objets dans le tableau.
 	 */
-	
+
 	@Override
 	public int taille() {
 		return this.nbObjets;
@@ -60,7 +60,7 @@ public class TabObjets implements CollectionObjets, Serializable {
 	 * @return true si le tableau d'objets est vide ou false dans le cas
 	 *         contraire.
 	 */
-	
+
 	@Override
 	public boolean estVide() {
 		return ( this.nbObjets == 0 );
@@ -73,21 +73,21 @@ public class TabObjets implements CollectionObjets, Serializable {
 	 * @return true si le tableau d'objets est plein ou false dans le cas
 	 *         contraire.
 	 */
-	
+
 	@Override
 	public boolean estPlein() {
 		return ( this.nbObjets == this.tabObjets.length );
 	}
 
 	/**
-	 * La méthode publique obtenirObjet() permet de retourner l'objet qui
-	 * est à un certain indice dans le tableau d'objets.
+	 * La méthode publique obtenirObjet() permet de retourner l'objet qui est à
+	 * un certain indice dans le tableau d'objets.
 	 * 
 	 * @param indice
 	 *            L'indice de l'objet à retourner.
 	 * 
-	 * @return L'objet si l'indice fait partie des limites du tableau ou
-	 *         null dans le cas contraire.
+	 * @return L'objet si l'indice fait partie des limites du tableau ou null
+	 *         dans le cas contraire.
 	 */
 
 	public Object obtenirObjet( int indice ) {
@@ -102,8 +102,8 @@ public class TabObjets implements CollectionObjets, Serializable {
 
 	/**
 	 * Implémentation de la méthode chercher() qui permet de chercher un objet
-	 * dans le tableau d'objets. On assume que la classe des objets du tableau
-	 * a redéfinit la méthode equals() de la classe Object et a implémenté la
+	 * dans le tableau d'objets. On assume que la classe des objets du tableau a
+	 * redéfinit la méthode equals() de la classe Object et a implémenté la
 	 * méthode compareTo() de l'interface Comparable. Le tableau est en ordre
 	 * croissant. On utilise l'algorithme de la recherche binaire (recherche
 	 * dichotomique).
@@ -111,21 +111,21 @@ public class TabObjets implements CollectionObjets, Serializable {
 	 * @param obj
 	 *            L'objet à chercher.
 	 * 
-	 * @return L'indice dans le tableau, si l'objet est présent ou 
-	 *         la valeur -1, si l'objet n'est pas présent.
+	 * @return L'indice dans le tableau, si l'objet est présent ou la valeur -1,
+	 *         si l'objet n'est pas présent.
 	 */
 
 	// On prend en charge la sécurité du code de la méthode.
 	// On assume que la classe des objets du tableau implémente l'interface
 	// Comparable. L'annotation @SuppressWarnings permet de supprimer
 	// l'avertissement du compilateur.
-	@SuppressWarnings( "unchecked" )
-	
-	@Override	
+	@SuppressWarnings("unchecked")
+
+	@Override
 	public int chercher( Object obj ) {
 		// Recherche binaire (recherche dichotomique).
 
-		int indTrouve = -1;  // Suppose inexistant.
+		int indTrouve = -1; // Suppose inexistant.
 		int indMin = 0;
 		int indMax = this.nbObjets - 1;
 		int indMilieu;
@@ -138,13 +138,13 @@ public class TabObjets implements CollectionObjets, Serializable {
 				// On a trouvé.
 				indTrouve = indMilieu;
 				finRecherche = true;
-				
+
 				// Il n'y a pas de méthode compareTo() dans la classe Object.
 				// On doit convertir en type de l'interface Comparable pour
 				// accéder à la méthode compareTo().
-				
-			} else if ( ( (Comparable <Object>) obj ).compareTo( this.tabObjets[indMilieu] ) < 0 ) {
-				
+
+			} else if ( ( (Comparable<Object>) obj ).compareTo( this.tabObjets[indMilieu] ) < 0 ) {
+
 				// On cherche à gauche du milieu.
 				indMax = indMilieu - 1;
 			} else {
@@ -162,29 +162,29 @@ public class TabObjets implements CollectionObjets, Serializable {
 	 * 
 	 * @param obj
 	 *            L'objet à ajouter.
-	 *            
+	 * 
 	 * @return true si l'objet a été ajouté dans le tableau ou false dans le cas
 	 *         contraire.
 	 */
 
 	// On prend en charge la sécurité du code de la méthode.
-	@SuppressWarnings( "unchecked" )
-	
-	@Override	
+	@SuppressWarnings("unchecked")
+
+	@Override
 	public boolean ajouter( Object obj ) {
 		boolean insertionOk = false;
 
 		if ( !this.estPlein() ) {
-			
+
 			// Commence par l'indice de fin.
-			
+
 			int indice = this.nbObjets - 1;
 
-			// Tant que l'objet du tableau est plus grand que celui 
+			// Tant que l'objet du tableau est plus grand que celui
 			// que l'on veut insérer, on le copie à droite.
 
-			while ( indice >= 0 && ( (Comparable <Object>) this.tabObjets[indice] ).compareTo( obj ) > 0 ) {
-				
+			while ( indice >= 0 && ( (Comparable<Object>) this.tabObjets[indice] ).compareTo( obj ) > 0 ) {
+
 				this.tabObjets[indice + 1] = this.tabObjets[indice];
 				--indice;
 			}
@@ -209,30 +209,30 @@ public class TabObjets implements CollectionObjets, Serializable {
 	 * @return L'objet qui a été supprimé ou null s'il est impossible de
 	 *         supprimer l'objet.
 	 */
-	
+
 	@Override
 	public Object supprimer( int indice ) {
-		Object objSup = null;  // L'objet qui sera supprimé.
+		Object objSup = null; // L'objet qui sera supprimé.
 
 		if ( !this.estVide() ) {
-			
+
 			if ( indice >= 0 && indice < this.nbObjets ) {
-				
+
 				// Conserver l'objet qui sera supprimé.
-				
+
 				objSup = this.tabObjets[indice];
-	
+
 				// Transférer les objets.
-				
+
 				for ( int ind = indice + 1; ind < this.nbObjets; ++ind ) {
 					this.tabObjets[ind - 1] = this.tabObjets[ind];
 				}
-	
+
 				--this.nbObjets; // Un objet de moins dans le tableau.
 				this.tabObjets[this.nbObjets] = null;
 			}
 		}
-		
+
 		return objSup;
 	}
 
@@ -246,25 +246,25 @@ public class TabObjets implements CollectionObjets, Serializable {
 	 * @return L'objet qui a été supprimé ou null s'il est impossible de
 	 *         supprimer l'objet.
 	 */
-	
+
 	@Override
 	public Object supprimer( Object obj ) {
-		Object objSup = null;  // L'objet qui sera supprimé.
-		int indice;            // L'indice de l'objet à supprimer.
+		Object objSup = null; // L'objet qui sera supprimé.
+		int indice; // L'indice de l'objet à supprimer.
 
 		if ( !this.estVide() ) {
 
 			// Chercher à quel indice se trouve l'objet à supprimer et
 			// le supprimer.
-			
+
 			indice = this.chercher( obj );
-			
+
 			objSup = this.supprimer( indice );
 		}
 
 		return objSup;
 	}
-	
+
 	/**
 	 * Redéfinition de la méthode toString() de la classe Object.
 	 * 
@@ -284,19 +284,19 @@ public class TabObjets implements CollectionObjets, Serializable {
 
 		infos += this.tabObjets[i] + "]";
 
-	    return infos;
+		return infos;
 	}
-	
+
 	/**
-	 * La méthode publique statique lireFicBin() permet de lire un objet de
-	 * type TabObjets du fichier binaire.
+	 * La méthode publique statique lireFicBin() permet de lire un objet de type
+	 * TabObjets du fichier binaire.
 	 * 
 	 * @param ficLecture
 	 *            Nom logique du fichier binaire déjà ouvert en mode lecture.
 	 * 
 	 * @return Un objet de type TabObjets ou null si fin de fichier.
 	 */
-	
+
 	public static TabObjets lireFicBin( ObjectInputStream ficLecture ) {
 
 		TabObjets tabObjets;
@@ -323,13 +323,13 @@ public class TabObjets implements CollectionObjets, Serializable {
 	}
 
 	/**
-	 * La méthode ecrireFicBin() permet d'écrire l'objet courant dans le
-	 * fichier binaire.
+	 * La méthode ecrireFicBin() permet d'écrire l'objet courant dans le fichier
+	 * binaire.
 	 * 
 	 * @param ficEcriture
 	 *            Nom logique du fichier binaire déjà ouvert en mode écriture.
 	 */
-	
+
 	public void ecrireFicBin( ObjectOutputStream ficEcriture ) {
 
 		/* this fait référence à l'objet courant de type TabObjets. */
