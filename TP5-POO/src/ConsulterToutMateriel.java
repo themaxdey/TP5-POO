@@ -9,30 +9,47 @@
 import outilsjava.*;
 
 /**
- * La classe ConsulterToutMateriel permet de faire la consultation de tout le matériel informatique, pour le programme 
- * de réemploi de matériel informatique de l'entreprise MomoTech. Cette classe implémente l'interface OutilsConstantes.
+ * La classe ConsulterToutMateriel permet de faire la consultation de tout le
+ * matériel informatique, pour le programme de réemploi de matériel informatique
+ * de l'entreprise MomoTech. Cette classe implémente l'interface
+ * OutilsConstantes.
  */
 
 public class ConsulterToutMateriel implements OutilsConstantes {
 
 	/**
-	 * Le constructeur ConsulterToutMateriel() permet de consulter tout le matériel informatique, pour le programme 
-     * de réemploi de matériel informatique de l'entreprise MomoTech. On peut consulter tout le matériel,
-	 * uniquement les ordinateurs, uniquement les écrans ou uniquement les imprimantes.
+	 * Le constructeur ConsulterToutMateriel() permet de consulter tout le matériel
+	 * informatique, pour le programme de réemploi de matériel informatique de
+	 * l'entreprise MomoTech. On peut consulter tout le matériel, uniquement les
+	 * ordinateurs, uniquement les écrans ou uniquement les imprimantes.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère l'entreprise MomoTech.
 	 */
 
-	public ConsulterToutMateriel( MomoTech momoTech ) {
+	public ConsulterToutMateriel(MomoTech momoTech) {
 		// Constantes locales.
-		final String MESS_VIDE = "\nImpossible de consulter tout le matériel informatique. " +
-				 				 "Il n'y a aucun matériel destiné au réemploi de disponible.";
+		final String MESS_VIDE = "\nImpossible de consulter tout le matériel informatique. "
+				+ "Il n'y a aucun matériel destiné au réemploi de disponible.";
 		final String TITRE = "\nVoici les informations de tout le matériel informatique sélectionné.";
-		
-		/**
-		 * TODO (À COMPLÉTER). Voir page 12 de l'énoncé du TP5.
-		 */
+
+		if (momoTech.getTabMateriel().estVide()) {
+			System.out.println(MESS_VIDE);
+		} else {
+			int nbElements = momoTech.getTabMateriel().taille();
+
+			char type = OutilsLecture.lireCaractereDisparate(MaterielInfo.QUEST_TYPE_CONSULTER,
+					MaterielInfo.TYPES_MATERIEL_CONSULTER);
+			
+			System.out.println(TITRE);
+			
+			int compteurMat = 0;
+			
+			for (int i = 0; i < nbElements; i++) {
+				Object matCourant = momoTech.getTabMateriel().obtenirObjet(i);
+				
+			}
+		}
 
 	}
 }
