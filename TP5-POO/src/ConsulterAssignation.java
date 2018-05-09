@@ -1,5 +1,5 @@
 /**
- * Auteurs : TODO et Christian Mongeon
+ * Auteurs : Maxime Dery & Jean-Sebastien Beaulne et Christian Mongeon
  * Fichier : ConsulterAssignation.java
  * Cours   : 420-ZE4-MO (TP5, MomoTech)
  * Date    : 15 mai 2018
