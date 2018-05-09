@@ -26,7 +26,7 @@ public class AssignerMateriel implements OutilsConstantes {
 	 *            L'objet qui gère l'entreprise MomoTech.
 	 */
 
-	public AssignerMateriel( MomoTech momoTech ) {
+	public AssignerMateriel(MomoTech momoTech) {
 		// Constantes locales.
 		final String MESS_MATERIEL_VIDE = "\nImpossible d'assigner du matériel informatique. "
 				+ "Il n'y a aucun matériel destiné au réemploi de disponible.";
@@ -40,17 +40,17 @@ public class AssignerMateriel implements OutilsConstantes {
 
 		char rep = NON;
 
-		if ( momoTech.getTabMateriel().estVide() ) {
+		if (momoTech.getTabMateriel().estVide()) {
 
-			System.out.println( MESS_MATERIEL_VIDE );
+			System.out.println(MESS_MATERIEL_VIDE);
 
-		} else if ( momoTech.getTabAssignations().taille() == momoTech.getTabMateriel().taille() ) {
+		} else if (momoTech.getTabAssignations().taille() == momoTech.getTabMateriel().taille()) {
 
-			System.out.println( MESS_TOUT_ASSIGNE );
+			System.out.println(MESS_TOUT_ASSIGNE);
 
-		} else if ( momoTech.getTabParticipants().estVide() ) {
+		} else if (momoTech.getTabParticipants().estVide()) {
 
-			System.out.println( MESS_PARTICIP_VIDE );
+			System.out.println(MESS_PARTICIP_VIDE);
 
 		} else {
 			MaterielInfo materiel;
@@ -59,66 +59,61 @@ public class AssignerMateriel implements OutilsConstantes {
 			int indMateriel, indAssignation, indParticipant;
 
 			do {
-				System.out.println( TITRE );
-
-				/**
-				 * TODO (À COMPLÉTER). Voir pages 15 et 16 de l'énoncé du TP5.
-				 */
+				System.out.println(TITRE);
 
 				materiel = MaterielInfo.creerMaterielInfo();
 				materiel.lireNoMateriel();
 
-				indMateriel = momoTech.getTabMateriel().chercher( materiel );
+				indMateriel = momoTech.getTabMateriel().chercher(materiel);
 
-				if ( indMateriel == -1 ) {
+				if (indMateriel == -1) {
 
 					System.out.println(
-							"\nLe matériel informatique numéro " + materiel.getNoMateriel() + " n'existe pas." );
+							"\nLe matériel informatique numéro " + materiel.getNoMateriel() + " n'existe pas.");
 
 				} else {
 
-					assignation = new Assignation( materiel.getNoMateriel() );
-					indAssignation = momoTech.getTabAssignations().chercher( assignation );
+					assignation = new Assignation(materiel.getNoMateriel());
+					indAssignation = momoTech.getTabAssignations().chercher(assignation);
 
-					if ( indAssignation != -1 ) {
+					if (indAssignation != -1) {
 
-						System.out.println( "\nLe matériel informatique numéro " + materiel.getNoMateriel()
-								+ " est déjà assigné à un participant." );
+						System.out.println("\nLe matériel informatique numéro " + materiel.getNoMateriel()
+								+ " est déjà assigné à un participant.");
 
 					} else {
 
 						participant = new Participant();
 						participant.lireNoParticipant();
 
-						indParticipant = momoTech.getTabParticipants().chercher( participant );
+						indParticipant = momoTech.getTabParticipants().chercher(participant);
 
-						if ( indParticipant == -1 ) {
+						if (indParticipant == -1) {
 
 							System.out.println(
-									"\nLe participant numéro " + participant.getNoParticipant() + " n'existe pas." );
+									"\nLe participant numéro " + participant.getNoParticipant() + " n'existe pas.");
 
 						} else {
 
-							participant = (Participant) momoTech.getTabParticipants().obtenirObjet( indParticipant );
+							participant = (Participant) momoTech.getTabParticipants().obtenirObjet(indParticipant);
 
-							if ( participant.getTabAssignMat().estPlein() ) {
+							if (participant.getTabAssignMat().estPlein()) {
 
-								System.out.println( "\nL'assignation est impossible, car le participant numéro "
-										+ participant.getNoParticipant() + " a atteint le maximum d'assignations" );
+								System.out.println("\nL'assignation est impossible, car le participant numéro "
+										+ participant.getNoParticipant() + " a atteint le maximum d'assignations");
 
 							} else {
 
-								assignation.setNoParticipant( participant.getNoParticipant() );
-								momoTech.getTabAssignations().ajouter( assignation );
+								assignation.setNoParticipant(participant.getNoParticipant());
+								momoTech.getTabAssignations().ajouter(assignation);
 
-								materiel = (MaterielInfo) momoTech.getTabMateriel().obtenirObjet( indMateriel );
+								materiel = (MaterielInfo) momoTech.getTabMateriel().obtenirObjet(indMateriel);
 
-								materiel.setAssigne( true );
-								participant.getTabAssignMat().ajouter( materiel );
+								materiel.setAssigne(true);
+								participant.getTabAssignMat().ajouter(materiel);
 
-								System.out.println( "\nLe matériel informatique numéro " + materiel.getNoMateriel()
-										+ " est assigné au participant numéro " + participant.getNoParticipant()
-										+ "." );
+								System.out.println("\nLe matériel informatique numéro " + materiel.getNoMateriel()
+										+ " est assigné au participant numéro " + participant.getNoParticipant() + ".");
 
 							}
 
@@ -131,14 +126,14 @@ public class AssignerMateriel implements OutilsConstantes {
 				// ------------------------------------------------------------
 				// Reste-t-il du matériel informatique qui n'est pas assigné ?
 
-				if ( momoTech.getTabAssignations().taille() == momoTech.getTabMateriel().taille() ) {
+				if (momoTech.getTabAssignations().taille() == momoTech.getTabMateriel().taille()) {
 
-					System.out.println( MESS_FIN_ASSIGNATION );
+					System.out.println(MESS_FIN_ASSIGNATION);
 					rep = NON;
 				} else {
-					rep = OutilsLecture.lireOuiNon( QUEST_AUTRE_ASSIGN );
+					rep = OutilsLecture.lireOuiNon(QUEST_AUTRE_ASSIGN);
 				}
-			} while ( rep == OUI );
+			} while (rep == OUI);
 		}
 	}
 }

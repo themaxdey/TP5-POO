@@ -18,14 +18,13 @@ public class ConsulterTousParticipants implements OutilsConstantes {
 
 	/**
 	 * Le constructeur ConsulterTousParticipants() permet de consulter tous les
-	 * participants au programme de réemploi de matériel informatique de
-	 * MomoTech.
+	 * participants au programme de réemploi de matériel informatique de MomoTech.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère l'entreprise MomoTech.
 	 */
 
-	public ConsulterTousParticipants( MomoTech momoTech ) {
+	public ConsulterTousParticipants(MomoTech momoTech) {
 		// Constantes locales.
 		final String MESS_VIDE = "\nImpossible de consulter tous les participants. Il n'y a aucun "
 				+ "participant dans l'entreprise MomoTech.";
@@ -34,25 +33,25 @@ public class ConsulterTousParticipants implements OutilsConstantes {
 		int nbElements;
 		Participant participant;
 
-		if ( momoTech.getTabParticipants().estVide() ) {
+		if (momoTech.getTabParticipants().estVide()) {
 
-			System.out.println( MESS_VIDE );
+			System.out.println(MESS_VIDE);
 
 		} else {
 
 			nbElements = momoTech.getTabParticipants().taille();
 
-			System.out.println( TITRE );
+			System.out.println(TITRE);
 
-			for ( int i = 0; i < nbElements; i++ ) {
+			for (int i = 0; i < nbElements; i++) {
 
-				participant = (Participant) momoTech.getTabParticipants().obtenirObjet( i );
+				participant = (Participant) momoTech.getTabParticipants().obtenirObjet(i);
 				participant.afficher();
-				OutilsLecture.lireEntree( QUEST_CONTINUER );
+				OutilsLecture.lireEntree(QUEST_CONTINUER);
 
 			}
 
-			System.out.println( nbElements + " participants consultés." );
+			System.out.println(nbElements + " participants consultés.");
 
 		}
 
