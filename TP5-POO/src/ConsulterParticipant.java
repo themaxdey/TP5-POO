@@ -41,9 +41,19 @@ public class ConsulterParticipant implements OutilsConstantes {
 			do {
 				System.out.println( TITRE );
 
-				/**
-				 * TODO (À COMPLÉTER). Voir page 8 de l'énoncé du TP5.
-				 */
+				participant = new Participant();
+				
+				participant.lireNoParticipant();
+				
+				indParticipant = momoTech.getTabParticipants().chercher(participant);
+				
+				if ( indParticipant == -1) {
+					System.out.println(MESS_VIDE);
+				} else {
+					participant = (Participant) momoTech.getTabParticipants().obtenirObjet(indParticipant);
+					
+					participant.afficher();
+				}
 
 
 				//--------------------------------------------------------
