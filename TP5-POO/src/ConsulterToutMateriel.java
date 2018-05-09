@@ -55,7 +55,13 @@ public class ConsulterToutMateriel implements OutilsConstantes {
 					OutilsLecture.lireEntree(QUEST_CONTINUER);
 				}
 			}
-
+			
+			/*
+			 * TODO
+			 * 
+			 * Utilisation de la constante compteurMat ou nbElements ?????
+			 */
+			
 			System.out.println("\nNombre d'items consultés : " + compteurMat);
 
 		}
