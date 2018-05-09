@@ -49,7 +49,9 @@ public class ConsulterParticipant implements OutilsConstantes {
 				indParticipant = momoTech.getTabParticipants().chercher(participant);
 
 				if (indParticipant == -1) {
-					System.out.println(MESS_VIDE);
+					
+					System.out.println("Le participant numéro " + participant.getNoParticipant() + " n'existe pas.");
+					
 				} else {
 					participant = (Participant) momoTech.getTabParticipants().obtenirObjet(indParticipant);
 
