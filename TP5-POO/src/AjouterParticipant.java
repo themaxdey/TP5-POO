@@ -49,7 +49,7 @@ public class AjouterParticipant implements OutilsConstantes {
 
 				indParticipant = momoTech.getTabParticipants().chercher( participant );
 
-				if ( indParticipant != -1 ) {
+				if ( indParticipant == -1 ) {
 
 					System.out.println( "\nLe participant no " + participant.getNoParticipant() + " existe déjà." );
 
