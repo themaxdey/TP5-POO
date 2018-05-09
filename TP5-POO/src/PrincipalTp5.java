@@ -37,14 +37,6 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 		System.out.println( MESS_BIENVENUE );
 
-		/**
-		 * TODO (À COMPLÉTER). Voir page 8 de l'énoncé du TP5.
-		 * 
-		 * Lorsque vous aurez terminé et testé la première partie (pages 8 à 53
-		 * de l'énoncé du TP5), n'oubliez pas de compléter et de tester la
-		 * deuxième partie (pages 54 à 55 de l'énoncé du TP5).
-		 */
-
 		MomoTech momoTech = new MomoTech();
 
 		gererMenuPrincipal( momoTech );
