@@ -18,13 +18,14 @@ public class AjouterParticipant implements OutilsConstantes {
 
 	/**
 	 * Le constructeur AjouterParticipant() permet de gérer les ajouts de
-	 * participants au programme de réemploi de matériel informatique de MomoTech.
+	 * participants au programme de réemploi de matériel informatique de
+	 * MomoTech.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère l'entreprise MomoTech.
 	 */
 
-	public AjouterParticipant(MomoTech momoTech) {
+	public AjouterParticipant( MomoTech momoTech ) {
 		// Constantes locales.
 		final String MESS_PLEIN = "\nImpossible d'ajouter un participant. Le nombre maximum "
 				+ "de participants est atteint.";
@@ -34,43 +35,44 @@ public class AjouterParticipant implements OutilsConstantes {
 
 		char rep = NON;
 
-		if (momoTech.getTabParticipants().estPlein()) {
-			System.out.println(MESS_PLEIN);
+		if ( momoTech.getTabParticipants().estPlein() ) {
+			System.out.println( MESS_PLEIN );
 		} else {
 			Participant participant;
 			int indParticipant;
 
 			do {
-				System.out.println(TITRE);
+				System.out.println( TITRE );
 
 				participant = new Participant();
 				participant.lireNoParticipant();
 
-				indParticipant = momoTech.getTabParticipants().chercher(participant);
+				indParticipant = momoTech.getTabParticipants().chercher( participant );
 
-				if (indParticipant == -1) {
+				if ( indParticipant == -1 ) {
 
-					System.out.println("\nLe participant no " + participant.getNoParticipant() + " existe déjà.");
+					System.out
+							.println( "\nLe participant numéro " + participant.getNoParticipant() + " existe déjà." );
 
 				} else {
 
 					participant.lireAutresRenseignements();
-					momoTech.getTabParticipants().ajouter(participant);
+					momoTech.getTabParticipants().ajouter( participant );
 
-					System.out.println("\nLe participant no " + participant.getNoParticipant() + " à été ajouté.");
+					System.out.println( "\nLe participant no " + participant.getNoParticipant() + " à été ajouté." );
 
 				}
 
 				// -------------------------------------------------
 				// Avons-nous atteint le maximum des participants ?
 
-				if (momoTech.getTabParticipants().estPlein()) {
-					System.out.println(MESS_DEVENU_PLEIN);
+				if ( momoTech.getTabParticipants().estPlein() ) {
+					System.out.println( MESS_DEVENU_PLEIN );
 					rep = NON;
 				} else {
-					rep = OutilsLecture.lireOuiNon(QUEST_AUTRE_PARTICIPANT);
+					rep = OutilsLecture.lireOuiNon( QUEST_AUTRE_PARTICIPANT );
 				}
-			} while (rep == OUI);
+			} while ( rep == OUI );
 		}
 	}
 }

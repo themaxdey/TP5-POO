@@ -9,15 +9,17 @@
 import outilsjava.*;
 
 /**
- * La classe AjouterMateriel permet de faire des ajouts de matériel informatique, pour le programme de réemploi
- * de matériel informatique de l'entreprise MomoTech. Cette classe implémente l'interface OutilsConstantes.
+ * La classe AjouterMateriel permet de faire des ajouts de matériel
+ * informatique, pour le programme de réemploi de matériel informatique de
+ * l'entreprise MomoTech. Cette classe implémente l'interface OutilsConstantes.
  */
 
 public class AjouterMateriel implements OutilsConstantes {
 
 	/**
-	 * Le constructeur AjouterMateriel() permet de gérer les ajouts de matériel informatique, pour le 
-	 * programme de réemploi de matériel informatique de l'entreprise MomoTech.
+	 * Le constructeur AjouterMateriel() permet de gérer les ajouts de matériel
+	 * informatique, pour le programme de réemploi de matériel informatique de
+	 * l'entreprise MomoTech.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère l'entreprise MomoTech.
@@ -42,12 +44,31 @@ public class AjouterMateriel implements OutilsConstantes {
 			do {
 				System.out.println( TITRE );
 
-				/**
-				 * TODO (À COMPLÉTER). Voir page 11 de l'énoncé du TP5.
-				 */
+				matTemp = MaterielInfo.creerMaterielInfo();
+				matTemp.lireNoMateriel();
 
+				indiceMat = momoTech.getTabMateriel().chercher( matTemp );
 
-				//---------------------------------------------------------
+				if ( indiceMat != 1 ) {
+
+					System.out.println( "\nLe matériel informatique no " + matTemp.getNoMateriel() + " existe déjà." );
+
+				} else {
+
+					typeMat = OutilsLecture.lireCaractereDisparate( MaterielInfo.QUEST_TYPE_BASE,
+							MaterielInfo.TYPES_MATERIEL );
+					materiel = MaterielInfo.creerMaterielInfo( typeMat );
+
+					materiel.setNoMateriel( matTemp.getNoMateriel() );
+					materiel.lireAutresRenseignements();
+					momoTech.getTabMateriel().ajouter( materiel );
+
+					System.out.println( "Le matériel numéro " + materiel.getNoMateriel() + " de type "
+							+ materiel.obtenirDescription() + " a été ajouté." );
+
+				}
+
+				// ---------------------------------------------------------
 				// Avons-nous atteint le maximum de matériel informatique ?
 
 				if ( momoTech.getTabMateriel().estPlein() ) {
