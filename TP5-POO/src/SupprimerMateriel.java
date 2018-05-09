@@ -48,10 +48,6 @@ public class SupprimerMateriel implements OutilsConstantes {
 
 				System.out.println( TITRE );
 
-				/**
-				 * TODO (À COMPLÉTER). Voir page 13 de l'énoncé du TP5.
-				 */
-
 				materiel = MaterielInfo.creerMaterielInfo();
 				materiel.lireNoMateriel();
 
