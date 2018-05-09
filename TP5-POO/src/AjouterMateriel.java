@@ -1,5 +1,5 @@
 /**
- * Auteurs : Jean-Sebastien Beaulne et Maxime Dery et Christian Mongeon
+ * Auteurs : Jean-Sebastien Beaulne et Maxime Dery et Christian Mongeonnnnnnnnnnnnnnnnnnn
  * Fichier : AjouterMateriel.java
  * Cours   : 420-ZE4-MO (TP5, MomoTech)
  * Date    : 15 mai 2018
@@ -9,15 +9,17 @@
 import outilsjava.*;
 
 /**
- * La classe AjouterMateriel permet de faire des ajouts de matériel informatique, pour le programme de réemploi
- * de matériel informatique de l'entreprise MomoTech. Cette classe implémente l'interface OutilsConstantes.
+ * La classe AjouterMateriel permet de faire des ajouts de matériel
+ * informatique, pour le programme de réemploi de matériel informatique de
+ * l'entreprise MomoTech. Cette classe implémente l'interface OutilsConstantes.
  */
 
 public class AjouterMateriel implements OutilsConstantes {
 
 	/**
-	 * Le constructeur AjouterMateriel() permet de gérer les ajouts de matériel informatique, pour le 
-	 * programme de réemploi de matériel informatique de l'entreprise MomoTech.
+	 * Le constructeur AjouterMateriel() permet de gérer les ajouts de
+	 * matériel informatique, pour le programme de réemploi de matériel
+	 * informatique de l'entreprise MomoTech.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère l'entreprise MomoTech.
@@ -46,8 +48,7 @@ public class AjouterMateriel implements OutilsConstantes {
 				 * TODO (À COMPLÉTER). Voir page 11 de l'énoncé du TP5.
 				 */
 
-
-				//---------------------------------------------------------
+				// ---------------------------------------------------------
 				// Avons-nous atteint le maximum de matériel informatique ?
 
 				if ( momoTech.getTabMateriel().estPlein() ) {
