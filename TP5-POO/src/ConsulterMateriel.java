@@ -9,47 +9,58 @@
 import outilsjava.*;
 
 /**
- * La classe ConsulterMateriel permet de faire des consultations de matériel informatique, pour le programme de
- * réemploi de matériel informatique de l'entreprise MomoTech. Cette classe implémente l'interface OutilsConstantes.
+ * La classe ConsulterMateriel permet de faire des consultations de matériel
+ * informatique, pour le programme de réemploi de matériel informatique de
+ * l'entreprise MomoTech. Cette classe implémente l'interface OutilsConstantes.
  */
 
 public class ConsulterMateriel implements OutilsConstantes {
 
 	/**
-	 * Le constructeur ConsulterMateriel() permet de gérer les consultations de matériel informatique, pour le
-	 * programme de réemploi de matériel informatique de l'entreprise MomoTech.
+	 * Le constructeur ConsulterMateriel() permet de gérer les consultations de
+	 * matériel informatique, pour le programme de réemploi de matériel informatique
+	 * de l'entreprise MomoTech.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère l'entreprise MomoTech.
 	 */
 
-	public ConsulterMateriel( MomoTech momoTech ) {
+	public ConsulterMateriel(MomoTech momoTech) {
 		// Constantes locales.
-		final String MESS_VIDE = "\nImpossible de consulter du matériel informatique. " +
-				 				 "Il n'y a aucun matériel destiné au réemploi de disponible.";
+		final String MESS_VIDE = "\nImpossible de consulter du matériel informatique. "
+				+ "Il n'y a aucun matériel destiné au réemploi de disponible.";
 		final String TITRE = "\nConsultation de matériel informatique.";
 		final String QUEST_AUTRE_MATERIEL = "\nVoulez-vous consulter un autre matériel informatique (O ou N) ? ";
 
 		char rep = NON;
 
-		if ( momoTech.getTabMateriel().estVide() ) {
-			System.out.println( MESS_VIDE );
+		if (momoTech.getTabMateriel().estVide()) {
+			System.out.println(MESS_VIDE);
 		} else {
 			MaterielInfo materiel;
 			int indiceMat;
 
 			do {
-				System.out.println( TITRE );
+				System.out.println(TITRE);
 
-				/**
-				 * TODO (À COMPLÉTER). Voir page 12 de l'énoncé du TP5.
-				 */
+				materiel = MaterielInfo.creerMaterielInfo();
 
+				materiel.lireNoMateriel();
 
-				//-----------------------------------------------------
-				rep = OutilsLecture.lireOuiNon( QUEST_AUTRE_MATERIEL );
+				indiceMat = momoTech.getTabMateriel().chercher(materiel);
 
-			} while ( rep == OUI );
+				if (indiceMat == -1) {
+					System.out.println(MESS_VIDE);
+				} else {
+					materiel = (MaterielInfo) momoTech.getTabMateriel().obtenirObjet(indiceMat);
+
+					materiel.afficher();
+				}
+
+				// -----------------------------------------------------
+				rep = OutilsLecture.lireOuiNon(QUEST_AUTRE_MATERIEL);
+
+			} while (rep == OUI);
 		}
 	}
 }
