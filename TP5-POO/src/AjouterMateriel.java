@@ -1,5 +1,5 @@
 /**
- * Auteurs : Jean-Sebastien Beaulne et Maxime Dery et Christian Mongeon
+ * Auteurs : TODO et Christian Mongeon
  * Fichier : AjouterMateriel.java
  * Cours   : 420-ZE4-MO (TP5, MomoTech)
  * Date    : 15 mai 2018
@@ -9,28 +9,26 @@
 import outilsjava.*;
 
 /**
- * La classe AjouterMateriel permet de faire des ajouts de matÃ©riel
- * informatique, pour le programme de rÃ©emploi de matÃ©riel informatique de
- * l'entreprise MomoTech. Cette classe implÃ©mente l'interface OutilsConstantes.
+ * La classe AjouterMateriel permet de faire des ajouts de matériel informatique, pour le programme de réemploi
+ * de matériel informatique de l'entreprise MomoTech. Cette classe implémente l'interface OutilsConstantes.
  */
 
 public class AjouterMateriel implements OutilsConstantes {
 
 	/**
-	 * Le constructeur AjouterMateriel() permet de gÃ©rer les ajouts de
-	 * matÃ©riel informatique, pour le programme de rÃ©emploi de matÃ©riel
-	 * informatique de l'entreprise MomoTech.
+	 * Le constructeur AjouterMateriel() permet de gérer les ajouts de matériel informatique, pour le 
+	 * programme de réemploi de matériel informatique de l'entreprise MomoTech.
 	 * 
 	 * @param momoTech
-	 *            L'objet qui gÃ¨re l'entreprise MomoTech.
+	 *            L'objet qui gère l'entreprise MomoTech.
 	 */
 
 	public AjouterMateriel( MomoTech momoTech ) {
 		// Constantes locales.
-		final String MESS_PLEIN = "\nImpossible d'ajouter du matÃ©riel. Le nombre maximum est atteint.";
-		final String TITRE = "\nAjout de matÃ©riel informatique.";
-		final String MESS_DEVENU_PLEIN = "\nAjout de matÃ©riel terminÃ©. Le nombre maximum est atteint.";
-		final String QUEST_AUTRE_MATERIEL = "\nVoulez-vous ajouter un autre matÃ©riel informatique (O ou N) ? ";
+		final String MESS_PLEIN = "\nImpossible d'ajouter du matériel. Le nombre maximum est atteint.";
+		final String TITRE = "\nAjout de matériel informatique.";
+		final String MESS_DEVENU_PLEIN = "\nAjout de matériel terminé. Le nombre maximum est atteint.";
+		final String QUEST_AUTRE_MATERIEL = "\nVoulez-vous ajouter un autre matériel informatique (O ou N) ? ";
 
 		char rep = NON;
 
@@ -45,11 +43,12 @@ public class AjouterMateriel implements OutilsConstantes {
 				System.out.println( TITRE );
 
 				/**
-				 * TODO (Ã€ COMPLÃ‰TER). Voir page 11 de l'Ã©noncÃ© du TP5.
+				 * TODO (À COMPLÉTER). Voir page 11 de l'énoncé du TP5.
 				 */
 
-				// ---------------------------------------------------------
-				// Avons-nous atteint le maximum de matÃ©riel informatique ?
+
+				//---------------------------------------------------------
+				// Avons-nous atteint le maximum de matériel informatique ?
 
 				if ( momoTech.getTabMateriel().estPlein() ) {
 					System.out.println( MESS_DEVENU_PLEIN );
