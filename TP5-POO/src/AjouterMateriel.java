@@ -63,7 +63,7 @@ public class AjouterMateriel implements OutilsConstantes {
 					materiel.lireAutresRenseignements();
 					momoTech.getTabMateriel().ajouter( materiel );
 
-					System.out.println( "Le matériel numéro " + materiel.getNoMateriel() + " de type "
+					System.out.println( "\nLe matériel numéro " + materiel.getNoMateriel() + " de type "
 							+ materiel.obtenirDescription() + " a été ajouté." );
 
 				}
