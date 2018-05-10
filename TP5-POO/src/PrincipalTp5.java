@@ -39,36 +39,9 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 		MomoTech momoTech = new MomoTech();
 
-<<<<<<< HEAD
 		String nomFichier;
 
 		gererMenuPrincipal(momoTech);
-=======
-		// Nom physique du fichier.
-		String nomFichier;
-
-		// Nom logique du fichier binaire en lecture.
-		ObjectInputStream ficLecture;
-
-		nomFichier = OutilsFichier.lireNomFichier( QUEST_FIC_MOMOTECH );
-		ficLecture = preparerOuvertureFichier( nomFichier, momoTech );
-
-		if ( ficLecture == null ) {
-
-			System.out.println( ERREUR_FIC_MOMOTECH );
-
-		} else {
-
-			momoTech = MomoTech.lireFicBin( ficLecture );
-
-			OutilsFichier.fermerFicBinLecture( ficLecture, nomFichier );
-
-			gererMenuPrincipal( momoTech );
-
-			sauvegarderFichier( nomFichier, momoTech );
-
-		}
->>>>>>> a3ccd28c7f3728a2cc8ea9a0ababc52bb7b85854
 
 		// ------------------------------------
 		System.out.println(MESS_FIN_PROG);
@@ -85,20 +58,9 @@ public class PrincipalTp5 implements OutilsConstantes {
 	private void gererMenuPrincipal(MomoTech momoTech) {
 		// Constante pour les noms de mois.
 
-<<<<<<< HEAD
 		// Erreur au mot |o|ctobre.
 		final String[] tabMois = { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre",
 				"cctobre", "novembre", "décembre" };
-=======
-		/*
-		 * 
-		 * ERREUR AU MOIS D'OCTOBRE
-		 * 
-		 */
-
-		final String[] tabMois = { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
-				"septembre", "cctobre", "novembre", "décembre" };
->>>>>>> a3ccd28c7f3728a2cc8ea9a0ababc52bb7b85854
 
 		// Obtenir la date d'aujourd'hui.
 
@@ -367,28 +329,12 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 	private void sauvegarderFichier(String nomFichier, MomoTech momoTech) {
 
-<<<<<<< HEAD
 		/**
 		 * TODO (À COMPLÉTER). Voir page 54 de l'énoncé du TP5.
 		 * 
 		 * Cette méthode est utilisée dans la deuxième partie (pages 54 à 55 de l'énoncé
 		 * du TP5).
 		 */
-=======
-		ObjectOutputStream ficEcriture = null;
-
-		System.out.println( "\nSauvegarde du fichier " + nomFichier + "." );
-
-		ficEcriture = OutilsFichier.ouvrirFicBinEcriture( nomFichier );
-
-		if ( ficEcriture != null ) {
-
-			momoTech.ecrireFicBin( ficEcriture );
-
-			OutilsFichier.fermerFicBinEcriture( ficEcriture, nomFichier );
-
-		}
->>>>>>> a3ccd28c7f3728a2cc8ea9a0ababc52bb7b85854
 
 	}
 }
