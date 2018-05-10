@@ -74,7 +74,7 @@ public class TerminerAssignation implements OutilsConstantes {
 					indAssignation = momoTech.getTabAssignations().chercher( assignation );
 
 					if ( indAssignation == -1 ) {
-						System.out.println( "\nLe matériel informatique numéro " + indAssignation
+						System.out.println( "\nLe matériel informatique numéro " + assignation.getNoMateriel()
 								+ " n'est pas assigné à un participant" );
 					} else {
 						assignation = (Assignation) momoTech.getTabAssignations().obtenirObjet( indAssignation );
