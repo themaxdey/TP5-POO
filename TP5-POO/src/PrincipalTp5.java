@@ -39,7 +39,7 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 		MomoTech momoTech = new MomoTech();
 
-		// Nom physique du fichier.
+		// Nom physique du fichier. :)
 		String nomFichier;
 
 		// Nom logique du fichier binaire en lecture.
