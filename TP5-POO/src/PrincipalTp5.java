@@ -1,5 +1,5 @@
 /**
- * Auteurs : Maxime Dery & Jean-Sebastien Beaulne et Christian Mongeon
+ * Auteurs : Jean-Sébstien Beaulne et Christian Mongeon
  * Fichier : PrincipalTp5.java
  * Cours   : 420-ZE4-MO (TP5, MomoTech)
  * Date    : 15 mai 2018
@@ -39,10 +39,10 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 		MomoTech momoTech = new MomoTech();
 
-		// Nom physique du fichier.
+		// Nom physique du fichier
 		String nomFichier;
 
-		// Nom logique du fichier binaire en lecture.
+		// Nom logique du fichier binaire en lecture
 		ObjectInputStream ficLecture;
 
 		nomFichier = OutilsFichier.lireNomFichier( QUEST_FIC_MOMOTECH );
@@ -79,7 +79,12 @@ public class PrincipalTp5 implements OutilsConstantes {
 	private void gererMenuPrincipal( MomoTech momoTech ) {
 		// Constante pour les noms de mois.
 
-		// Erreur au mot |o|ctobre.
+		/*
+		 * 
+		 * ERREUR MOIS D'OCTOBRE
+		 * 
+		 */
+
 		final String[] tabMois = { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
 				"septembre", "cctobre", "novembre", "décembre" };
 
@@ -312,27 +317,42 @@ public class PrincipalTp5 implements OutilsConstantes {
 		boolean peutContinuer = true;
 
 		try {
+
 			chemin = Paths.get( nomFichier );
+
 		} catch ( InvalidPathException errNomFichier ) {
-			System.out.println( "\nErreur, le fichier " + nomFichier + " contient des mots illégaux." );
+
+			System.out.println( "\nErreur, le fichier " + nomFichier + " contient des caractères illégaux" );
+
 			peutContinuer = false;
+
 		}
+
 		if ( peutContinuer ) {
 
 			if ( Files.notExists( chemin ) ) {
+
 				ficEcriture = OutilsFichier.ouvrirFicBinEcriture( nomFichier );
 
 				if ( ficEcriture == null ) {
+
 					peutContinuer = false;
+
 				} else {
+
 					momoTech.ecrireFicBin( ficEcriture );
 					OutilsFichier.fermerFicBinEcriture( ficEcriture, nomFichier );
+
 				}
+
 			}
+
 		}
 
 		if ( peutContinuer ) {
+
 			ficLecture = OutilsFichier.ouvrirFicBinLecture( nomFichier );
+
 		}
 
 		// ----------------
