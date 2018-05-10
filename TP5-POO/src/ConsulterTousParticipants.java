@@ -51,7 +51,7 @@ public class ConsulterTousParticipants implements OutilsConstantes {
 
 			}
 
-			System.out.println(nbElements + " participants consultés.");
+			System.out.println("\nNombre de participants consultés: " + nbElements);
 
 		}
 
