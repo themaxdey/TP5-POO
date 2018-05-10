@@ -35,40 +35,61 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 		final String ERREUR_FIC_MOMOTECH = "\nUne erreur est survenue avec le fichier de MomoTech.";
 
-		System.out.println(MESS_BIENVENUE);
+		System.out.println( MESS_BIENVENUE );
 
 		MomoTech momoTech = new MomoTech();
 
+		// Nom physique du fichier.
 		String nomFichier;
 
-		gererMenuPrincipal(momoTech);
+		// Nom logique du fichier binaire en lecture.
+		ObjectInputStream ficLecture;
+
+		nomFichier = OutilsFichier.lireNomFichier( QUEST_FIC_MOMOTECH );
+		ficLecture = preparerOuvertureFichier( nomFichier, momoTech );
+
+		if ( ficLecture == null ) {
+
+			System.out.println( ERREUR_FIC_MOMOTECH );
+
+		} else {
+
+			momoTech = MomoTech.lireFicBin( ficLecture );
+
+			OutilsFichier.fermerFicBinLecture( ficLecture, nomFichier );
+
+			gererMenuPrincipal( momoTech );
+
+			sauvegarderFichier( nomFichier, momoTech );
+
+		}
 
 		// ------------------------------------
-		System.out.println(MESS_FIN_PROG);
+		System.out.println( MESS_FIN_PROG );
 	}
 
 	/**
-	 * La méthode privée gererMenuPrincipal() permet de traiter le menu principal
-	 * pour la gestion de MomoTech.
+	 * La méthode privée gererMenuPrincipal() permet de traiter le menu
+	 * principal pour la gestion de MomoTech.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère l'entreprise MomoTech.
 	 */
 
-	private void gererMenuPrincipal(MomoTech momoTech) {
+	private void gererMenuPrincipal( MomoTech momoTech ) {
 		// Constante pour les noms de mois.
 
 		// Erreur au mot |o|ctobre.
-		final String[] tabMois = { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre",
-				"cctobre", "novembre", "décembre" };
+		final String[] tabMois = { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+				"septembre", "cctobre", "novembre", "décembre" };
 
 		// Obtenir la date d'aujourd'hui.
 
 		GregorianCalendar aujourdhui = new GregorianCalendar();
 
-		int annee = aujourdhui.get(GregorianCalendar.YEAR);
-		int mois = aujourdhui.get(GregorianCalendar.MONTH);
-		int jour = aujourdhui.get(GregorianCalendar.DAY_OF_MONTH);
+		int annee = aujourdhui.get( GregorianCalendar.YEAR );
+		int mois = aujourdhui.get( GregorianCalendar.MONTH );
+		int jour = aujourdhui.get( GregorianCalendar.DAY_OF_MONTH );
 
 		// Constante pour le texte du menu principal.
 
@@ -86,23 +107,23 @@ public class PrincipalTp5 implements OutilsConstantes {
 		char choix;
 
 		do {
-			choix = OutilsAffichage.afficherChoisirMenu(MENU_PRINCIPAL, GERER_MATERIEL, QUITTER);
+			choix = OutilsAffichage.afficherChoisirMenu( MENU_PRINCIPAL, GERER_MATERIEL, QUITTER );
 
-			switch (choix) {
+			switch ( choix ) {
 
 			case GERER_MATERIEL:
-				this.gererMateriel(momoTech);
+				this.gererMateriel( momoTech );
 				break;
 
 			case GERER_PARTICIPANTS:
-				this.gererParticipants(momoTech);
+				this.gererParticipants( momoTech );
 				break;
 
 			case GERER_ASSIGNATIONS:
-				this.gererAssignations(momoTech);
+				this.gererAssignations( momoTech );
 				break;
 			}
-		} while (choix != QUITTER);
+		} while ( choix != QUITTER );
 	}
 
 	/**
@@ -113,7 +134,7 @@ public class PrincipalTp5 implements OutilsConstantes {
 	 *            L'objet qui gère MomoTech.
 	 */
 
-	private void gererMateriel(MomoTech momoTech) {
+	private void gererMateriel( MomoTech momoTech ) {
 		// Constante pour le texte du sous-menu pour gérer le matériel
 		// informatique destiné au réemploi.
 
@@ -134,42 +155,43 @@ public class PrincipalTp5 implements OutilsConstantes {
 		char choix;
 
 		do {
-			choix = OutilsAffichage.afficherChoisirMenu(MENU_MATERIEL, AJOUTER_MATERIEL, QUITTER_SOUS_MENU);
+			choix = OutilsAffichage.afficherChoisirMenu( MENU_MATERIEL, AJOUTER_MATERIEL, QUITTER_SOUS_MENU );
 
-			switch (choix) {
+			switch ( choix ) {
 
 			case AJOUTER_MATERIEL:
-				new AjouterMateriel(momoTech);
+				new AjouterMateriel( momoTech );
 				break;
 
 			case SUPPRIMER_MATERIEL:
-				new SupprimerMateriel(momoTech);
+				new SupprimerMateriel( momoTech );
 				break;
 
 			case CONSULTER_MATERIEL:
-				new ConsulterMateriel(momoTech);
+				new ConsulterMateriel( momoTech );
 				break;
 
 			case CONSULTER_TOUT_MATERIEL:
-				new ConsulterToutMateriel(momoTech);
+				new ConsulterToutMateriel( momoTech );
 				break;
 
 			case QUITTER_SOUS_MENU:
-				System.out.println("\nFin du sous-menu pour la gestion du matériel informatique.");
+				System.out.println( "\nFin du sous-menu pour la gestion du matériel informatique." );
 				break;
 			}
-		} while (choix != QUITTER_SOUS_MENU);
+		} while ( choix != QUITTER_SOUS_MENU );
 	}
 
 	/**
-	 * La méthode privée gererParticipants() permet de gérer tous les participants
-	 * au programme de réemploi de matériel informatique de MomoTech.
+	 * La méthode privée gererParticipants() permet de gérer tous les
+	 * participants au programme de réemploi de matériel informatique de
+	 * MomoTech.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère MomoTech.
 	 */
 
-	private void gererParticipants(MomoTech momoTech) {
+	private void gererParticipants( MomoTech momoTech ) {
 		// Constante pour le texte du sous-menu pour gérer les participants.
 
 		final String MENU_PARTICIPANTS = "\nSous-menu pour la gestion des participants\n\n"
@@ -187,43 +209,43 @@ public class PrincipalTp5 implements OutilsConstantes {
 		char choix;
 
 		do {
-			choix = OutilsAffichage.afficherChoisirMenu(MENU_PARTICIPANTS, AJOUTER_PARTICIPANT, QUITTER_SOUS_MENU);
+			choix = OutilsAffichage.afficherChoisirMenu( MENU_PARTICIPANTS, AJOUTER_PARTICIPANT, QUITTER_SOUS_MENU );
 
-			switch (choix) {
+			switch ( choix ) {
 
 			case AJOUTER_PARTICIPANT:
-				new AjouterParticipant(momoTech);
+				new AjouterParticipant( momoTech );
 				break;
 
 			case SUPPRIMER_PARTICIPANT:
-				new SupprimerParticipant(momoTech);
+				new SupprimerParticipant( momoTech );
 				break;
 
 			case CONSULTER_PARTICIPANT:
-				new ConsulterParticipant(momoTech);
+				new ConsulterParticipant( momoTech );
 				break;
 
 			case CONSULTER_TOUS_PARTICIPANTS:
-				new ConsulterTousParticipants(momoTech);
+				new ConsulterTousParticipants( momoTech );
 				break;
 
 			case QUITTER_SOUS_MENU:
-				System.out.println("\nFin du sous-menu pour la gestion des participants.");
+				System.out.println( "\nFin du sous-menu pour la gestion des participants." );
 				break;
 			}
-		} while (choix != QUITTER_SOUS_MENU);
+		} while ( choix != QUITTER_SOUS_MENU );
 	}
 
 	/**
 	 * La méthode privée gererAssignations() permet de gérer les assignations de
-	 * tous les participants au programme de réemploi de matériel informatique de
-	 * MomoTech.
+	 * tous les participants au programme de réemploi de matériel informatique
+	 * de MomoTech.
 	 * 
 	 * @param momoTech
 	 *            L'objet qui gère MomoTech.
 	 */
 
-	private void gererAssignations(MomoTech momoTech) {
+	private void gererAssignations( MomoTech momoTech ) {
 		// Constante pour le texte du sous-menu pour gérer les assignations.
 
 		final String MENU_ASSIGNATIONS = "\nSous-menu pour la gestion des assignations\n\n"
@@ -242,47 +264,47 @@ public class PrincipalTp5 implements OutilsConstantes {
 		char choix;
 
 		do {
-			choix = OutilsAffichage.afficherChoisirMenu(MENU_ASSIGNATIONS, ASSIGNER, QUITTER_SOUS_MENU);
+			choix = OutilsAffichage.afficherChoisirMenu( MENU_ASSIGNATIONS, ASSIGNER, QUITTER_SOUS_MENU );
 
-			switch (choix) {
+			switch ( choix ) {
 
 			case ASSIGNER:
-				new AssignerMateriel(momoTech);
+				new AssignerMateriel( momoTech );
 				break;
 
 			case FIN_ASSIGNER:
-				new TerminerAssignation(momoTech);
+				new TerminerAssignation( momoTech );
 				break;
 
 			case CONSULTER_ASSIGNATION:
-				new ConsulterAssignation(momoTech);
+				new ConsulterAssignation( momoTech );
 				break;
 
 			case CONSULTER_TOUTES_ASSIGNATIONS:
-				new ConsulterToutesAssignations(momoTech);
+				new ConsulterToutesAssignations( momoTech );
 				break;
 
 			case QUITTER_SOUS_MENU:
-				System.out.println("\nFin du sous-menu pour la gestion des assignations.");
+				System.out.println( "\nFin du sous-menu pour la gestion des assignations." );
 				break;
 			}
-		} while (choix != QUITTER_SOUS_MENU);
+		} while ( choix != QUITTER_SOUS_MENU );
 	}
 
 	/**
-	 * La méthode privée preparerOuvertureFichier() permet d'ouvrir le fichier de
-	 * MomoTech en lecture. Si le fichier n'existe pas, on le crée sans aucune
-	 * donnée et on ouvre ce fichier par la suite en lecture.
+	 * La méthode privée preparerOuvertureFichier() permet d'ouvrir le fichier
+	 * de MomoTech en lecture. Si le fichier n'existe pas, on le crée sans
+	 * aucune donnée et on ouvre ce fichier par la suite en lecture.
 	 * 
 	 * @param nomFichier
 	 *            Le nom physique du fichier.
 	 * @param momoTech
 	 *            L'objet qui gère MomoTech.
-	 * @return Le nom logique du fichier si l'opération est un succès ou null dans
-	 *         le cas contraire.
+	 * @return Le nom logique du fichier si l'opération est un succès ou null
+	 *         dans le cas contraire.
 	 */
 
-	private ObjectInputStream preparerOuvertureFichier(String nomFichier, MomoTech momoTech) {
+	private ObjectInputStream preparerOuvertureFichier( String nomFichier, MomoTech momoTech ) {
 
 		ObjectInputStream ficLecture = null;
 		ObjectOutputStream ficEcriture = null;
@@ -290,27 +312,27 @@ public class PrincipalTp5 implements OutilsConstantes {
 		boolean peutContinuer = true;
 
 		try {
-			chemin = Paths.get(nomFichier);
-		} catch (InvalidPathException errNomFichier) {
-			System.out.println("\nErreur, le fichier " + nomFichier + " contient des mots illégaux.");
+			chemin = Paths.get( nomFichier );
+		} catch ( InvalidPathException errNomFichier ) {
+			System.out.println( "\nErreur, le fichier " + nomFichier + " contient des mots illégaux." );
 			peutContinuer = false;
 		}
-		if (peutContinuer) {
+		if ( peutContinuer ) {
 
-			if (Files.notExists(chemin)) {
-				ficEcriture = OutilsFichier.ouvrirFicBinEcriture(nomFichier);
+			if ( Files.notExists( chemin ) ) {
+				ficEcriture = OutilsFichier.ouvrirFicBinEcriture( nomFichier );
 
-				if (ficEcriture == null) {
+				if ( ficEcriture == null ) {
 					peutContinuer = false;
 				} else {
-					momoTech.ecrireFicBin(ficEcriture);
-					OutilsFichier.fermerFicBinEcriture(ficEcriture, nomFichier);
+					momoTech.ecrireFicBin( ficEcriture );
+					OutilsFichier.fermerFicBinEcriture( ficEcriture, nomFichier );
 				}
 			}
 		}
-		
-		if (peutContinuer) {
-			ficLecture = OutilsFichier.ouvrirFicBinLecture(nomFichier);
+
+		if ( peutContinuer ) {
+			ficLecture = OutilsFichier.ouvrirFicBinLecture( nomFichier );
 		}
 
 		// ----------------
@@ -318,8 +340,8 @@ public class PrincipalTp5 implements OutilsConstantes {
 	}
 
 	/**
-	 * La méthode privée sauvegarderFichier() permet de sauvegarder l'objet qui gère
-	 * MomoTech, reçu en paramètre, dans le fichier reçu en paramètre.
+	 * La méthode privée sauvegarderFichier() permet de sauvegarder l'objet qui
+	 * gère MomoTech, reçu en paramètre, dans le fichier reçu en paramètre.
 	 * 
 	 * @param nomFichier
 	 *            Le nom physique du fichier.
@@ -327,14 +349,9 @@ public class PrincipalTp5 implements OutilsConstantes {
 	 *            L'objet qui gère MomoTech.
 	 */
 
-	private void sauvegarderFichier(String nomFichier, MomoTech momoTech) {
+	private void sauvegarderFichier( String nomFichier, MomoTech momoTech ) {
 
-		/**
-		 * TODO (À COMPLÉTER). Voir page 54 de l'énoncé du TP5.
-		 * 
-		 * Cette méthode est utilisée dans la deuxième partie (pages 54 à 55 de l'énoncé
-		 * du TP5).
-		 */
+		ObjectOutputStream ficEcriture = null;
 
 	}
 }
