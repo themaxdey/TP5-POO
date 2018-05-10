@@ -39,7 +39,30 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 		MomoTech momoTech = new MomoTech();
 
-		gererMenuPrincipal( momoTech );
+		// Nom physique du fichier.
+		String nomFichier;
+
+		// Nom logique du fichier binaire en lecture.
+		ObjectInputStream ficLecture;
+
+		nomFichier = OutilsFichier.lireNomFichier( QUEST_FIC_MOMOTECH );
+		ficLecture = preparerOuvertureFichier( nomFichier, momoTech );
+
+		if ( ficLecture == null ) {
+
+			System.out.println( ERREUR_FIC_MOMOTECH );
+
+		} else {
+
+			momoTech = MomoTech.lireFicBin( ficLecture );
+
+			OutilsFichier.fermerFicBinLecture( ficLecture, nomFichier );
+
+			gererMenuPrincipal( momoTech );
+
+			sauvegarderFichier( nomFichier, momoTech );
+
+		}
 
 		// ------------------------------------
 		System.out.println( MESS_FIN_PROG );
@@ -55,6 +78,12 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 	private void gererMenuPrincipal( MomoTech momoTech ) {
 		// Constante pour les noms de mois.
+
+		/*
+		 * 
+		 * ERREUR AU MOIS D'OCTOBRE
+		 * 
+		 */
 
 		final String[] tabMois = { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
 				"septembre", "cctobre", "novembre", "décembre" };
@@ -307,12 +336,19 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 	private void sauvegarderFichier( String nomFichier, MomoTech momoTech ) {
 
-		/**
-		 * TODO (À COMPLÉTER). Voir page 54 de l'énoncé du TP5.
-		 * 
-		 * Cette méthode est utilisée dans la deuxième partie (pages 54 à 55 de
-		 * l'énoncé du TP5).
-		 */
+		ObjectOutputStream ficEcriture = null;
+
+		System.out.println( "\nSauvegarde du fichier " + nomFichier + "." );
+
+		ficEcriture = OutilsFichier.ouvrirFicBinEcriture( nomFichier );
+
+		if ( ficEcriture != null ) {
+
+			momoTech.ecrireFicBin( ficEcriture );
+
+			OutilsFichier.fermerFicBinEcriture( ficEcriture, nomFichier );
+
+		}
 
 	}
 }
