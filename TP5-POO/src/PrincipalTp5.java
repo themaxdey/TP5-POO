@@ -353,5 +353,17 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 		ObjectOutputStream ficEcriture = null;
 
+		System.out.println( "\nSauvegarde du fichier " + nomFichier + "." );
+
+		ficEcriture = OutilsFichier.ouvrirFicBinEcriture( nomFichier );
+
+		if ( ficEcriture != null ) {
+
+			momoTech.ecrireFicBin( ficEcriture );
+
+			OutilsFichier.fermerFicBinEcriture( ficEcriture, nomFichier );
+
+		}
+
 	}
 }
