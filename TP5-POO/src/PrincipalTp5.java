@@ -39,6 +39,7 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 		MomoTech momoTech = new MomoTech();
 
+<<<<<<< HEAD
 		// Nom physique du fichier.
 		String nomFichier;
 
@@ -63,6 +64,11 @@ public class PrincipalTp5 implements OutilsConstantes {
 			sauvegarderFichier( nomFichier, momoTech );
 
 		}
+=======
+		String nomFichier;
+
+		gererMenuPrincipal(momoTech);
+>>>>>>> 651fa1284ec4f8b990f031a714d862cae5285d7c
 
 		// ------------------------------------
 		System.out.println( MESS_FIN_PROG );
@@ -80,8 +86,13 @@ public class PrincipalTp5 implements OutilsConstantes {
 		// Constante pour les noms de mois.
 
 		// Erreur au mot |o|ctobre.
+<<<<<<< HEAD
 		final String[] tabMois = { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
 				"septembre", "cctobre", "novembre", "décembre" };
+=======
+		final String[] tabMois = { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre",
+				"cctobre", "novembre", "décembre" };
+>>>>>>> 651fa1284ec4f8b990f031a714d862cae5285d7c
 
 		// Obtenir la date d'aujourd'hui.
 
@@ -351,7 +362,16 @@ public class PrincipalTp5 implements OutilsConstantes {
 
 	private void sauvegarderFichier( String nomFichier, MomoTech momoTech ) {
 
+<<<<<<< HEAD
 		ObjectOutputStream ficEcriture = null;
+=======
+		/**
+		 * TODO (À COMPLÉTER). Voir page 54 de l'énoncé du TP5.
+		 * 
+		 * Cette méthode est utilisée dans la deuxième partie (pages 54 à 55 de l'énoncé
+		 * du TP5).
+		 */
+>>>>>>> 651fa1284ec4f8b990f031a714d862cae5285d7c
 
 	}
 }
